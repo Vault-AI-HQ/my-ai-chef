@@ -5,18 +5,24 @@ class SuggestionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.lightbulb, size: 80, color: Color(0xFF00FFB8)),
-            SizedBox(height: 20),
+            const Icon(Icons.lightbulb, size: 100, color: Color(0xFF00FFB8)),
+            const SizedBox(height: 30),
             Text(
-              'Sugestão a caminho',
-              ',
-              style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
+              'Sugestão do Chef AI',
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Diz-me onde estás e o que te apetece...',
+              style: TextStyle(color: Colors.white70, fontSize: 18),
             ),
           ],
         ),
