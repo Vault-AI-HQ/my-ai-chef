@@ -10,11 +10,11 @@ class RegisterScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.add_circle, size: 80, color: Color(0xFF00FFB8)),
+            Icon(Icons.restaurant_menu, size: 80, color: Color(0xFF00FFB8)),
             SizedBox(height: 20),
             Text(
               'Registar refeição',
-              style: TextStyle(fontSize: 28, color: Colors.white),
+              style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.bold),
             ),
           ],
         ),
