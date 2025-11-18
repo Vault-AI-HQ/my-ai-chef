@@ -14,7 +14,7 @@ class HistoryScreen extends StatelessWidget {
             SizedBox(height: 20),
             Text(
               'O teu histórico',
-              style: TextStyle(fontSize: 28, color: Colors.white),
+              style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.bold),
             ),
           ],
         ),
