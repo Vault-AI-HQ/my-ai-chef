@@ -27,6 +27,7 @@ class MyAIChefApp extends StatelessWidget {
 }
 
 final _router = GoRouter(
+  initialLocation: '/',
   routes: [
     ShellRoute(
       builder: (context, state, child) => ScaffoldWithNavBar(child: child),
