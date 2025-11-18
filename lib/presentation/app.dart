@@ -15,12 +15,11 @@ class MyAIChefApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: const ColorScheme.dark(
-          primary: Color(0xFF8B1E1E),     // vermelho escuro do teu logo
-          secondary: Color(0xFF00FFB8),  // ciano neon
+          primary: Color(0xFF8B1E1E),
+          secondary: Color(0xFF00FFB8),
           surface: Color(0xFF121212),
         ),
         useMaterial3: true,
-        fontFamily: 'Poppins',
       ),
       routerConfig: _router,
     );
@@ -28,7 +27,6 @@ class MyAIChefApp extends StatelessWidget {
 }
 
 final _router = GoRouter(
-  initialLocation: '/',
   routes: [
     ShellRoute(
       builder: (context, state, child) => ScaffoldWithNavBar(child: child),
