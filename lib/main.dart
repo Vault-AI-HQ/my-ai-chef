@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart'; // ← este ficheiro existe, foi gerado pelo Firebase
+import 'firebase_options.dart'; // ← este ficheiro agora tem o conteúdo certo
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Esta é a linha correta para Flutter 3.24+ e flutterfire_cli novo
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform.instance,
+    options: DefaultFirebaseOptions.currentPlatform,
   );
+
   runApp(const MyAIChefApp());
 }
 
@@ -21,16 +24,15 @@ class MyAIChefApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark,
         scaffoldBackgroundColor: Colors.black,
-        primaryColor: Colors.pinkAccent,
         fontFamily: 'Orbitron',
         textTheme: const TextTheme(
           headlineLarge: TextStyle(
-            fontSize: 42,
+            fontSize: 48,
             fontWeight: FontWeight.w900,
             color: Colors.pinkAccent,
             shadows: [
               Shadow(
-                blurRadius: 20,
+                blurRadius: 30,
                 color: Colors.pinkAccent,
                 offset: Offset(0, 0),
               ),
@@ -38,7 +40,7 @@ class MyAIChefApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const SplashScreen(), // vamos criar já a seguir
+      home: const SplashScreen(),
     );
   }
 }
@@ -54,7 +56,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacement(
+      Navigator.pushReplacement(
+        context,
         MaterialPageRoute(builder: (_) => const HomePage()),
       );
     });
@@ -62,21 +65,17 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.black,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'MY AI CHEF',
-              style: Theme.of(context).textTheme.headlineLarge,
-            ),
-            const SizedBox(height: 40),
-            const CircularProgressIndicator(
-              color: Colors.pinkAccent,
-              strokeWidth: 6,
-            ),
+            Text('MY AI CHEF', style: TextStyle(fontSize: 60, color: Colors.pinkAccent, shadows: [
+              Shadow(blurRadius: 40, color: Colors.pinkAccent)
+            ])),
+            SizedBox(height: 50),
+            CircularProgressIndicator(color: Colors.pinkAccent, strokeWidth: 8),
           ],
         ),
       ),
@@ -86,14 +85,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
+      backgroundColor: Colors.black,
       body: Center(
         child: Text(
-          'ABRIU CHEFE!!! 🔥🔥🔥',
-          style: Theme.of(context).textTheme.headlineLarge,
+          'ABRIU CHEFE!!!',
+          style: TextStyle(fontSize: 80, color: Colors.pinkAccent, fontWeight: FontWeight.w900),
         ),
       ),
     );
