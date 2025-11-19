@@ -10,4 +10,92 @@ void main() async {
   runApp(const MyAIChefApp());
 }
 
-// ... resto do código que te mandei antes (SplashScreen, HomePage, tema neon, etc.)
+class MyAIChefApp extends StatelessWidget {
+  const MyAIChefApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'My AI Chef',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: Colors.black,
+        primaryColor: Colors.pinkAccent,
+        fontFamily: 'Orbitron',
+        textTheme: const TextTheme(
+          headlineLarge: TextStyle(
+            fontSize: 42,
+            fontWeight: FontWeight.w900,
+            color: Colors.pinkAccent,
+            shadows: [
+              Shadow(
+                blurRadius: 20,
+                color: Colors.pinkAccent,
+                offset: Offset(0, 0),
+              ),
+            ],
+          ),
+        ),
+      ),
+      home: const SplashScreen(), // vamos criar já a seguir
+    );
+  }
+}
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) => const HomePage()),
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'MY AI CHEF',
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+            const SizedBox(height: 40),
+            const CircularProgressIndicator(
+              color: Colors.pinkAccent,
+              strokeWidth: 6,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text(
+          'ABRIU CHEFE!!! 🔥🔥🔥',
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
+      ),
+    );
+  }
+}
